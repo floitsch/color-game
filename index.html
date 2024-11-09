@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Color Swipe Game</title>
+    <title>Random Color Game</title>
     <style>
         body {
             margin: 0;
@@ -35,7 +35,8 @@
     <div id="instruction"></div>
 
     <script>
-        let currentColor = 'black';
+        const colors = ['black', 'white', 'red'];
+        let currentColor = colors[Math.floor(Math.random() * colors.length)];
         let score = 0;
         let touchStart = null;
         let touchEnd = null;
@@ -45,14 +46,10 @@
         updateTextColors();
         updateInstruction();
 
-        // Get next color in sequence
-        function getNextColor(color) {
-            const sequence = {
-                'black': 'white',
-                'white': 'red',
-                'red': 'black'
-            };
-            return sequence[color];
+        // Get random color different from current
+        function getNextColor() {
+            const availableColors = colors.filter(color => color !== currentColor);
+            return availableColors[Math.floor(Math.random() * availableColors.length)];
         }
 
         // Update text colors based on background
@@ -83,7 +80,7 @@
             if (requirements[currentColor] === gesture) {
                 score++;
                 document.getElementById('score').textContent = `Score: ${score}`;
-                currentColor = getNextColor(currentColor);
+                currentColor = getNextColor();
                 document.body.style.backgroundColor = currentColor;
                 updateTextColors();
                 updateInstruction();
