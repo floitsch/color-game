@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Color Swipe Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        #score {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            z-index: 1;
+        }
+
+        #instruction {
+            font-size: 1.5rem;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Score: 0</div>
+    <div id="instruction"></div>
+
+    <script>
+        let currentColor = 'black';
+        let score = 0;
+        let touchStart = null;
+        let touchEnd = null;
+
+        // Initial setup
+        document.body.style.backgroundColor = currentColor;
+        updateTextColors();
+        updateInstruction();
+
+        // Get next color in sequence
+        function getNextColor(color) {
+            const sequence = {
+                'black': 'white',
+                'white': 'red',
+                'red': 'black'
+            };
+            return sequence[color];
+        }
+
+        // Update text colors based on background
+        function updateTextColors() {
+            const textColor = currentColor === 'white' ? 'black' : 'white';
+            document.getElementById('score').style.color = textColor;
+            document.getElementById('instruction').style.color = textColor;
+        }
+
+        // Update instruction text
+        function updateInstruction() {
+            const instructions = {
+                'black': 'Swipe UP',
+                'white': 'Swipe DOWN',
+                'red': 'TAP the screen'
+            };
+            document.getElementById('instruction').textContent = instructions[currentColor];
+        }
+
+        // Check if the gesture matches the requirement
+        function checkGesture(gesture) {
+            const requirements = {
+                'black': 'up',
+                'white': 'down',
+                'red': 'tap'
+            };
+            
+            if (requirements[currentColor] === gesture) {
+                score++;
+                document.getElementById('score').textContent = `Score: ${score}`;
+                currentColor = getNextColor(currentColor);
+                document.body.style.backgroundColor = currentColor;
+                updateTextColors();
+                updateInstruction();
+            }
+        }
+
+        // Touch event handlers
+        document.body.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            touchEnd = null;
+            touchStart = {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            };
+        });
+
+        document.body.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            touchEnd = {
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            };
+        });
+
+        document.body.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            if (!touchStart || !touchEnd) {
+                // This was a tap
+                if (currentColor === 'red') {
+                    checkGesture('tap');
+                }
+                return;
+            }
+
+            const deltaY = touchStart.y - touchEnd.y;
+            const minSwipeDistance = 50; // minimum distance for swipe
+
+            if (Math.abs(deltaY) > minSwipeDistance) {
+                if (deltaY > 0) {
+                    checkGesture('up');
+                } else {
+                    checkGesture('down');
+                }
+            }
+
+            touchStart = null;
+            touchEnd = null;
+        });
+    </script>
+</body>
+</html>
