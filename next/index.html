@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#15121c">
+    <meta name="description" content="Add the next West Coast Swing Aarhus intro lesson to your calendar.">
+    <title>West Coast Swing Aarhus — Intro lesson</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #15121c;
+            color: #fffaf3;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100svh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(245, 89, 99, 0.28), transparent 32rem),
+                radial-gradient(circle at 90% 90%, rgba(255, 181, 71, 0.18), transparent 28rem),
+                #15121c;
+        }
+
+        main {
+            width: min(100%, 520px);
+            padding: clamp(28px, 7vw, 48px);
+            border: 1px solid rgba(255, 255, 255, 0.13);
+            border-radius: 28px;
+            background: rgba(31, 26, 40, 0.88);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+            backdrop-filter: blur(16px);
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: #ffb547;
+            font-size: 0.8rem;
+            font-weight: 750;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 12ch;
+            margin: 0;
+            font-size: clamp(2.3rem, 10vw, 4.2rem);
+            line-height: 0.94;
+            letter-spacing: -0.055em;
+        }
+
+        .details {
+            display: grid;
+            gap: 12px;
+            margin: 30px 0;
+            padding: 0;
+            list-style: none;
+            color: #e7dfeb;
+            font-size: 1.05rem;
+            line-height: 1.45;
+        }
+
+        .details li {
+            display: grid;
+            grid-template-columns: 1.6rem 1fr;
+            gap: 10px;
+            align-items: start;
+        }
+
+        .actions {
+            display: grid;
+            gap: 12px;
+        }
+
+        a {
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.17);
+            border-radius: 16px;
+            color: #fffaf3;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+        }
+
+        a:hover,
+        a:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.36);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        a:focus-visible {
+            outline: 3px solid #ffb547;
+            outline-offset: 3px;
+        }
+
+        .primary {
+            border-color: #f55963;
+            background: #f55963;
+            color: #1a1016;
+        }
+
+        .primary:hover,
+        .primary:focus-visible {
+            border-color: #ff737c;
+            background: #ff737c;
+        }
+
+        .facebook {
+            border-color: rgba(134, 180, 255, 0.45);
+            color: #b8d2ff;
+        }
+
+        .note {
+            margin: 22px 0 0;
+            color: #aaa1b1;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="eyebrow">West Coast Swing Aarhus</p>
+        <h1>Intro lesson</h1>
+
+        <ul class="details" aria-label="Event details">
+            <li><span aria-hidden="true">◆</span><span>Wednesday, 23 September 2026<br>18:15–19:30</span></li>
+            <li><span aria-hidden="true">●</span><span>Skovvangskolen<br>Skovvangsvej 150, 8200 Aarhus N</span></li>
+        </ul>
+
+        <div class="actions">
+            <a class="primary" href="../next.ics">Add to calendar</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Weekly%20lesson%20-%20Intro%20-%20West%20Coast%20Swing%20Aarhus&amp;dates=20260923T161500Z%2F20260923T173000Z&amp;details=West%20Coast%20Swing%20Aarhus%20intro%20lesson.%0A%0AFacebook%20event%3A%20https%3A%2F%2Ffb.me%2Fe%2FbDa3JT1SG&amp;location=Skovvangskolen%2C%20Skovvangsvej%20150%2C%208200%20Aarhus%20N%2C%20Denmark">Add with Google Calendar</a>
+            <a class="facebook" href="https://fb.me/e/bDa3JT1SG">View Facebook event</a>
+        </div>
+
+        <p class="note">The calendar file works with Apple Calendar, Outlook, and other calendar apps.</p>
+    </main>
+</body>
+</html>
